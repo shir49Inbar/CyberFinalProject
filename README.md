@@ -51,3 +51,10 @@ python models.py C:\WhatsAppStudy\derived\features.csv `
 
 The complete test session is held out. Randomly splitting windows from one
 capture would leak connection- and session-specific patterns into evaluation.
+
+The repository also includes a model-ready, privacy-reduced example at
+`datasets/features.csv`. It excludes raw captures and exact timestamps:
+
+```powershell
+python models.py datasets/features.csv --test-session S002
+```
