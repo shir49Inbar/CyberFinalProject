@@ -198,7 +198,8 @@ def build_dataset(dataset_root, device_ip, output_path=None):
     root = Path(dataset_root)
     log_paths = sorted((root / "logs").glob("events_*.csv"))
     if not log_paths:
-        raise FileNotFoundError(f"No events_*.csv files found in {root / 'logs'}")
+        raise FileNotFoundError(
+            f"No events_*.csv files found in {root / 'logs'}")
 
     session_frames = []
     for log_path in log_paths:
@@ -237,8 +238,10 @@ def main():
     parser = argparse.ArgumentParser(
         description="Build event-aligned WhatsApp traffic features."
     )
-    parser.add_argument("dataset_root", help="Folder containing captures/ and logs/")
-    parser.add_argument("--device-ip", required=True, help="WhatsApp VM IPv4 address")
+    parser.add_argument(
+        "dataset_root", help="Folder containing captures/ and logs/")
+    parser.add_argument("--device-ip", required=True,
+                        help="WhatsApp VM IPv4 address")
     parser.add_argument("--output", help="Output CSV path")
     args = parser.parse_args()
     build_dataset(args.dataset_root, args.device_ip, args.output)
